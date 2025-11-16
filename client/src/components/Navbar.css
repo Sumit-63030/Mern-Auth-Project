@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #745353;
+    color: white;
+}
+
+.login-btn:hover img {
+    transform: translateX(4px);
+}
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style for the user avatar circle */
+.user-data-div {
+  width: 40px;
+  height: 40px;
+  background-color: #745353;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-data-div:hover {
+  background-color: #5a3f3f;
+}
+
+.user-data-absolute {
+  position: absolute;
+  top: 45px; /* Reduced gap - was 50px */
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+  padding: 10px 0;
+  min-width: 160px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Bridge the gap between avatar and dropdown */
+.user-data-absolute::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 20px;
+  height: 15px;
+  background: transparent;
+}
+
+/* Keep menu open when hovering avatar OR dropdown */
+.user-menu:hover .user-data-absolute {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Style the dropdown list */
+.user-data-absolute ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-data-absolute li {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.user-data-absolute li:hover {
+  background-color: #f5f5f5;
+}
+
+.user-data-absolute li:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.user-data-absolute li:last-child {
+  border-radius: 0 0 10px 10px;
+}
