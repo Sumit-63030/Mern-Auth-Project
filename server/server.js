@@ -10,11 +10,25 @@ const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
 
-const allowOrigins = ['http://localhost:5173']
+const allowOrigins = [
+  'http://localhost:5173',                   // local dev
+  'https://cosmic-sopapillas-1a04f4.netlify.app'  // your deployed frontend
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow non-browser requests
+    if (allowOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowOrigins,credentials : true}));
 
 // API Endpoints
 app.get('/',(req,res) => res.send("API WORKING!"));
